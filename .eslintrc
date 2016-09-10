@@ -10,6 +10,7 @@
     "no-tabs": 0,
     "indent": [2, "tab", {"SwitchCase": 1}],
     "comma-dangle": [2, "never"],
-    "max-len": [2, 120]
+    "max-len": [2, 120],
+    "import/prefer-default-export": 0
   }
 }
