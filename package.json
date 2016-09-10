@@ -47,7 +47,8 @@
     "jsdom": "^9.1.0"
   },
   "pre-commit": [
-    "lint"
+    "lint",
+    "test"
   ],
   "nyc": {
     "require": [
