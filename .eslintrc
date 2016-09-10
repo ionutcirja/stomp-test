@@ -7,9 +7,8 @@
     "mocha": true
   },
   "rules": {
+    "no-tabs": 0,
     "indent": [2, "tab", {"SwitchCase": 1}],
-    "react/jsx-indent": [2, "tab"],
-    "react/jsx-indent-props": [2, "tab"],
     "comma-dangle": [2, "never"],
     "max-len": [2, 120]
   }
