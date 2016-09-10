@@ -16,7 +16,7 @@ function add(newItem, list) {
 	return sort(newList);
 }
 
-export default function model() {
+export default function () {
 	let list = [];
 
 	return {
