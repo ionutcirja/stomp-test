@@ -28,7 +28,6 @@ function render(el, data) {
 	});
 
 	el.innerHTML = html;
-
 	renderGraphs(data);
 }
 
