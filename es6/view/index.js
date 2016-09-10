@@ -6,8 +6,18 @@ function getRowHtml(rowData) {
 	const bestAsk = `<td>${rowData.bestAsk}</td>`;
 	const lastChangeBid = `<td>${rowData.lastChangeBid}</td>`;
 	const lastChangeAsk = `<td>${rowData.lastChangeAsk}</td>`;
+	const midPrice = `<td id="${rowData.name}"></td>`;
 
-	return `<tr>${name}${bestBid}${bestAsk}${lastChangeBid}${lastChangeAsk}</tr>`;
+	return `<tr>${name}${bestBid}${bestAsk}${lastChangeBid}${lastChangeAsk}${midPrice}</tr>`;
+}
+
+function renderGraphs(list) {
+	list.forEach((item) => {
+		window.Sparkline.draw(
+			document.getElementById(item.name),
+			item.midPriceList.map((midPriceItem) => midPriceItem.value)
+		);
+	});
 }
 
 function render(el, data) {
@@ -18,13 +28,15 @@ function render(el, data) {
 	});
 
 	el.innerHTML = html;
+
+	renderGraphs(data);
 }
 
 export default function (containerEl) {
-	const list = document.createElement('table');
-	containerEl.appendChild(list);
+	const table = document.createElement('table');
+	containerEl.appendChild(table);
 
 	return {
-		render: (data) => render(list, data)
+		render: (data) => render(table, data)
 	};
 }
