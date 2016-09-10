@@ -1,19 +1,18 @@
 import * as api from './api';
 import { API_URL, API_SUBSCRIBE_TOPIC } from './config';
+import view from './view';
+import model from './model';
+
+const modelInstance = model();
+const viewInstance = view(document.getElementsByClassName('content')[0]);
 
 function messageReceived(message) {
-	console.log(message);
+	modelInstance.addItem(JSON.parse(message.body));
+	viewInstance.render(modelInstance.getData());
 }
 
 function apiConnected() {
-	console.log('api connected');
-	document.getElementById('stomp-status').innerHTML = 'It has now successfully connected to a stomp server ' +
-		'serving price updates for some foreign exchange currency pairs.';
 	api.subscribe(API_SUBSCRIBE_TOPIC, messageReceived);
 }
 
 api.connect(API_URL, apiConnected);
-
-const exampleSparkline = document.getElementById('example-sparkline');
-window.Sparkline.draw(exampleSparkline, [1, 2, 3, 6, 8, 20, 2, 2, 4, 2, 3]);
-
