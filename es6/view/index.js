@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 
-function getRowHtml(rowData) {
+function computeRowHtml(rowData) {
 	const name = `<td>${rowData.name}</td>`;
 	const bestBid = `<td>${rowData.bestBid}</td>`;
 	const bestAsk = `<td>${rowData.bestAsk}</td>`;
@@ -11,11 +11,11 @@ function getRowHtml(rowData) {
 	return `<tr>${name}${bestBid}${bestAsk}${lastChangeBid}${lastChangeAsk}${midPrice}</tr>`;
 }
 
-function getTableHtml(data) {
+function computeTableHtml(data) {
 	let html = '';
 
 	data.forEach((item) => {
-		html += getRowHtml(item);
+		html += computeRowHtml(item);
 	});
 
 	return html;
@@ -32,7 +32,7 @@ function createTableGraphs(list) {
 }
 
 function render(el, data) {
-	el.innerHTML = getTableHtml(data);
+	el.innerHTML = computeTableHtml(data);
 	createTableGraphs(data);
 }
 
