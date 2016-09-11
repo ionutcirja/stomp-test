@@ -11,24 +11,29 @@ function getRowHtml(rowData) {
 	return `<tr>${name}${bestBid}${bestAsk}${lastChangeBid}${lastChangeAsk}${midPrice}</tr>`;
 }
 
-function renderGraphs(list) {
-	list.forEach((item) => {
-		window.Sparkline.draw(
-			document.getElementById(item.name),
-			item.midPriceList.map((midPriceItem) => midPriceItem.value)
-		);
-	});
-}
-
-function render(el, data) {
+function getTableHtml(data) {
 	let html = '';
 
 	data.forEach((item) => {
 		html += getRowHtml(item);
 	});
 
-	el.innerHTML = html;
-	renderGraphs(data);
+	return html;
+}
+
+function createGraph(id, list) {
+	window.Sparkline.draw(document.getElementById(id), list);
+}
+
+function createTableGraphs(list) {
+	list.forEach((item) => {
+		createGraph(item.name, item.midPriceList.map((midPriceItem) => midPriceItem.value));
+	});
+}
+
+function render(el, data) {
+	el.innerHTML = getTableHtml(data);
+	createTableGraphs(data);
 }
 
 export default function (containerEl) {
