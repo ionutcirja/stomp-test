@@ -26,7 +26,7 @@ describe('Api', () => {
 	});
 
 	describe('connect', () => {
-		it('should call Stomp client method and connect', () => {
+		it('should create a Stomp client instance and connect to the url', () => {
 			const callback = sandbox.spy();
 			api.connect('/url', callback);
 			expect(window.Stomp.client).to.have.been.calledWith('/url');
@@ -35,7 +35,7 @@ describe('Api', () => {
 	});
 
 	describe('subscribe', () => {
-		it('should call Stomp client instance subscribe method', () => {
+		it('should subscribe to a topic', () => {
 			const callback = sandbox.spy();
 			api.connect('/url', sandbox.spy());
 			api.subscribe('/topic', callback);
