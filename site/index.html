@@ -6,6 +6,25 @@
 <body>
 
 <section class="content"></section>
+<section class="info">
+    <p>Architectural decisions:</p>
+    <ul>
+        <li>Model module: deal with data (add new item, sort items, compute mid price and mid price list for the last 30 seconds)</li>
+        <li>View module: render the table using the model data</li>
+        <li>Api module: connect to the server and subscribe to different topics</li>
+        <li>Main app controller: initiate the api, create the model, create the view and update the view when the model changes</li>
+    </ul>
+
+    <p>Unit tests & linting:</p>
+    <ul>
+        <li>Run npm test to see the tests running</li>
+        <li>I used mocha, chai, sinon and sinon-chai, nyc for coverage and babel-plugin-__coverage__ for better es6 coverage</li>
+        <li>Added some linting also (extend airbnb rules and modify some I don't really agree with)</li>
+        <li>Just tested the pre-commit npm package (run tests and linting in order to commit)</li>
+    </ul>
+
+    <p>Name: Ionut Cirja, email: ionut.cirja@gmail.com</p>
+</section>
 
 <script src="bundle.js"></script>
 
